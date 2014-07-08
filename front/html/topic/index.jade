@@ -1,0 +1,40 @@
+//pre= "{{topic | json}}"
+.row
+    .col-md-9
+        .panel.panel-default
+            .panel-heading= "当前话题"
+                .panel-btn-group
+                    a.btn.btn-sm.glyphicon.glyphicon-plus-sign(title="新增",ng-click="addPost()")
+                    a.btn.btn-sm.glyphicon.glyphicon-th-large(title="展开",ng-class="{'cur':vm.expendState}",ng-click="vm.expendState = !vm.expendState")
+            div.md-error(ng-show="!topic.list.length && vm.loaded && !vm.error")= "还没有任何的推荐"
+            div.md-error(ng-if="!vm.loaded")
+                img.error-img(src="images/loading.gif")
+                数据加载中
+            div.md-error(ng-if="vm.error")= "数据加载失败"
+                p= "点击"
+                    a(ng-click="getTopic()")= "重新加载"
+            ul.list-group.md-post-list(ng-show="topic.list.length")
+                li(ng-repeat="topic in topic.list")
+                    a.list-group-item(href="#/topic/{{topic.objectId}}")
+                        span.label(ng-class="getLabelClass(topic)")= "{{getLabelText(topic)}}"
+                        span.title= "{{topic.title}}"
+                        .list-action
+                            span.btn.btn-sm.btn-danger(ng-click="deleteTopic($event,topic.objectId)")= "删除"
+                        .media(ng-show="vm.expendState")
+                            .pull-left(ng-if="topic.image")
+                                img.media-object(src="images/demo1.jpg")
+                            .media-body(ng-bind="topic.content")
+        pagination(total-items="topic.count",ng-model="vm.pagination.pagenum")
+
+
+    .col-md-3
+        .panel.panel-default
+            .panel-heading= "Panel content"
+            .panel-body= "Panel content"
+
+ul.tweet-timeline
+  li.tweet(ng-repeat="tweet in tweets | filter : {'content' :search } ")
+    .content {{ tweet.content}}
+    .text {{ tweet.hello}}
+    .date {{ tweet.created_at | date:'medium' }}
+    hr

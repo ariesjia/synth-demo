@@ -1,0 +1,23 @@
+doctype html
+html(ng-app="admin")
+    head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
+    meta(name='viewport', content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no")
+    title= appName
+    for cssFile in cssFiles
+        link(rel="stylesheet", href=cssFile)
+    for jsFile in jsFiles
+        script(src=jsFile)
+    body
+        header.navbar.navbar-static-top.bs-docs-nav#top(ng-controller="navController")
+            .container
+                .navbar-header
+                    a(href="/").navbar-brand= appName
+                nav.collapse.navbar-collapse.bs-navbar-collapse
+                    ul.nav.navbar-nav
+                        li(ng-repeat="nav in navList")
+                            a(href="{{nav.url}}",title="{{nav.label}}")= "{{nav.label}}"
+                    ul.nav.navbar-nav.navbar-right
+        div.container.bs-docs-container
+            div(ng-view)

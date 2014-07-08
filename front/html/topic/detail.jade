@@ -1,0 +1,11 @@
+ol.breadcrumb
+    li= "dipper"
+    li
+        a(href="#/")= "话题"
+
+
+div.md-error(ng-if="!vm.loaded")
+    img.error-img(src="images/loading.gif")
+    数据加载中
+h1= "{{vm.topic.title}}"
+div.content(bind-html-unsafe="vm.topic.content")

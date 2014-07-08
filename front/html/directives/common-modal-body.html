@@ -1,0 +1,10 @@
+<form name="modalForm">
+    <div class="modal-body">
+        <p class="tips" ng-if="options.tip" bind-html-unsafe="options.tip"></p>
+        <%template%>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary" ng-click="ok()" ><i class="g-icon-ok icon-white"></i><span>{{options.okButtonLabel}}</span></button>
+        <button type="button" class="btn btn-default" ng-click="cancel()"><i class="g-icon-cancel"></i><span>{{options.cancelButtonLabel}}</span></button>
+    </div>
+</form>

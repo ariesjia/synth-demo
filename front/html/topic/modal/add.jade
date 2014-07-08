@@ -1,0 +1,12 @@
+.form-group
+    label= "类别"
+    select.form-control(ng-model="topic.label",name="_label",ng-init="topic.label = topic.label || 'FAVORABLE' ",ng-required="true")
+        option(value="FAVORABLE",selected="selected")= "优惠"
+.form-group
+    label= "标题"
+    input.form-control(type="text",placeholder="标题",ng-model="topic.title",name="_title",ng-required="true")
+    span.warning-tips.bg-warning(ng-if="vm.checked && !modalForm._title.$valid ")= "请输入标题"
+.form-group
+    label= "内容"
+    textarea.form-control(rows="5",ng-model="topic.content",name="_content",ng-required="true")
+    span.warning-tips.bg-warning(ng-if="vm.checked && !modalForm._content.$valid ")= "请输入内容"

@@ -1,0 +1,6 @@
+<div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()" data-dismiss="close" aria-hidden="true">&times;</button>
+    <h2 class="modal-title" ng-bind="options.title"></h2>
+    <p class="modal-description" ng-bind="options.description" ng-show="options.description"></p>
+</div>
+<div bind-html-unsafe="contentHtml"></div>
